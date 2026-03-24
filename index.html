@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope for Rahway | Independent Candidate 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–black: #0a0a0a;
+–white: #f5f5f5;
+–pure-white: #ffffff;
+–mid: #888888;
+–border: rgba(255,255,255,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–black);
+color: var(–white);
+font-family: ‘Space Mono’, monospace;
+overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.2rem 3rem;
+border-bottom: 1px solid var(–border);
+background: rgba(10,10,10,0.92);
+backdrop-filter: blur(8px);
+}
+
+.nav-logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.1rem;
+letter-spacing: 0.2em;
+color: var(–white);
+text-decoration: none;
+}
+
+.nav-links {
+display: flex;
+gap: 2.5rem;
+list-style: none;
+}
+
+.nav-links a {
+text-decoration: none;
+color: var(–white);
+font-size: 0.7rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+opacity: 0.7;
+transition: opacity 0.2s;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 2rem 3rem 4rem;
+background: var(–black);
+position: relative;
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: radial-gradient(ellipse at 60% 50%, rgba(255,255,255,0.03) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.hero-eyebrow {
+font-size: 0.72rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: var(–white);
+opacity: 0.5;
+margin-bottom: 1.2rem;
+animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-logo {
+width: 100%;
+max-width: 720px;
+margin-bottom: 1.5rem;
+animation: fadeUp 0.9s 0.1s ease forwards;
+opacity: 0;
+}
+
+.hero-logo img {
+width: 100%;
+height: auto;
+display: block;
+filter: brightness(0) invert(1);
+}
+
+.hero-divider {
+width: 60px;
+height: 1px;
+background: var(–white);
+opacity: 0.3;
+margin-bottom: 1.5rem;
+animation: fadeUp 1s 0.2s ease forwards;
+opacity: 0;
+}
+
+.hero-tagline {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1rem, 2.5vw, 1.4rem);
+font-style: italic;
+color: var(–white);
+opacity: 0;
+max-width: 500px;
+line-height: 1.5;
+margin-bottom: 2.5rem;
+animation: fadeUp 1s 0.3s ease forwards;
+}
+
+.hero-cta {
+display: flex;
+gap: 1rem;
+animation: fadeUp 1s 0.4s ease forwards;
+opacity: 0;
+}
+
+.btn-primary {
+background: var(–white);
+color: var(–black);
+padding: 0.9rem 2.2rem;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+text-decoration: none;
+font-weight: 700;
+transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary:hover {
+background: var(–black);
+color: var(–white);
+outline: 1px solid var(–white);
+}
+
+.btn-secondary {
+border: 1px solid rgba(255,255,255,0.4);
+color: var(–white);
+padding: 0.9rem 2.2rem;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+text-decoration: none;
+transition: border-color 0.2s, opacity 0.2s;
+opacity: 0.7;
+}
+
+.btn-secondary:hover { opacity: 1; border-color: var(–white); }
+
+/* ── SECTIONS ── */
+section {
+padding: 6rem 3rem;
+border-top: 1px solid var(–border);
+}
+
+.section-label {
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–white);
+opacity: 0.4;
+margin-bottom: 3rem;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 5vw, 3.5rem);
+font-weight: 900;
+line-height: 1.1;
+margin-bottom: 2rem;
+max-width: 700px;
+}
+
+.section-body {
+font-size: 0.85rem;
+line-height: 1.9;
+opacity: 0.75;
+max-width: 620px;
+}
+
+/* ── ABOUT ── */
+#about {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6rem;
+align-items: start;
+}
+
+.about-credentials {
+margin-top: 3rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.credential {
+display: flex;
+align-items: baseline;
+gap: 1rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid var(–border);
+font-size: 0.75rem;
+opacity: 0.7;
+}
+
+.credential-year {
+font-size: 0.65rem;
+opacity: 0.5;
+white-space: nowrap;
+}
+
+/* ── PLATFORM ── */
+#platform { }
+
+.platform-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 0;
+margin-top: 3rem;
+border: 1px solid var(–border);
+}
+
+.platform-item {
+padding: 2.5rem;
+border-right: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+transition: background 0.2s;
+}
+
+.platform-item:hover { background: rgba(255,255,255,0.03); }
+
+.platform-number {
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+opacity: 0.3;
+margin-bottom: 1rem;
+}
+
+.platform-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 1rem;
+line-height: 1.2;
+}
+
+.platform-desc {
+font-size: 0.78rem;
+line-height: 1.8;
+opacity: 0.6;
+}
+
+/* ── DONATE ── */
+#donate {
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+#donate .section-title { text-align: center; }
+
+.donate-amount {
+display: flex;
+gap: 1rem;
+margin: 2rem 0;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.amount-btn {
+border: 1px solid var(–border);
+background: none;
+color: var(–white);
+padding: 0.8rem 1.8rem;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.8rem;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s;
+}
+
+.amount-btn:hover { background: rgba(255,255,255,0.08); border-color: var(–white); }
+
+/* ── CONTACT ── */
+#contact {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6rem;
+}
+
+.contact-form {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 0.4rem;
+}
+
+.form-group label {
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+opacity: 0.5;
+}
+
+.form-group input,
+.form-group textarea {
+background: rgba(255,255,255,0.04);
+border: 1px solid var(–border);
+color: var(–white);
+padding: 0.9rem 1rem;
+font-family: ‘Space Mono’, monospace;
+font-size: 0.8rem;
+outline: none;
+transition: border-color 0.2s;
+resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus { border-color: rgba(255,255,255,0.5); }
+
+.form-group textarea { min-height: 120px; }
+
+.form-note {
+font-size: 0.65rem;
+opacity: 0.35;
+line-height: 1.6;
+margin-top: 0.5rem;
+}
+
+/* ── FOOTER ── */
+footer {
+border-top: 1px solid var(–border);
+padding: 2.5rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.65rem;
+opacity: 0.4;
+letter-spacing: 0.1em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links { gap: 1.5rem; }
+.hero { padding: 5rem 1.5rem 3rem; }
+section { padding: 4rem 1.5rem; }
+#about { grid-template-columns: 1fr; gap: 3rem; }
+#contact { grid-template-columns: 1fr; gap: 3rem; }
+footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">Hope for Rahway</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-eyebrow">Rahway, NJ &nbsp;·&nbsp; November 2026</div>
+  <div class="hero-logo">
+    <img src="hope-logo-transparent.png" alt="Hope for Rahway">
+  </div>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">Radical Transparency. Real Results.</p>
+  <div class="hero-cta">
+    <a href="#platform" class="btn-primary">The Platform</a>
+    <a href="#donate" class="btn-secondary">Support the Campaign</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div>
+    <p class="section-label">About Hope</p>
+    <h2 class="section-title">A Rahway resident. A community organizer. A candidate.</h2>
+    <p class="section-body">Hope Moran is an artist, grandmother, former EMT, and lifelong community organizer who has called Rahway home since 2018. She has spent her career showing up for people — as a first responder, as Chair of Health and Human Services for the NAACP Rahway Branch, and as a small business owner who built Le Bretzel into one of the city's most beloved restaurants.</p>
+    <p class="section-body" style="margin-top:1rem;">Now she's running for Mayor as an independent — beholden to no party, no machine, no special interest. Just Rahway.</p>
+  </div>
+  <div>
+    <div class="about-credentials">
+      <div class="credential"><span class="credential-year">15 yrs</span><span>Emergency Medical Technician, including 9/11 response</span></div>
+      <div class="credential"><span class="credential-year">Current</span><span>Chair, Health & Human Services — NAACP Rahway Branch</span></div>
+      <div class="credential"><span class="credential-year">Rahway</span><span>Founder, Le Bretzel Restaurant — five-star reviews</span></div>
+      <div class="credential"><span class="credential-year">2026</span><span>Independent Candidate for Mayor of Rahway</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+
+<section id="platform">
+  <p class="section-label">The Five Root Principles</p>
+  <h2 class="section-title">What we're fighting for.</h2>
+  <div class="platform-grid">
+    <div class="platform-item">
+      <p class="platform-number">01</p>
+      <h3 class="platform-title">Municipal Water Control</h3>
+      <p class="platform-desc">Keep Rahway's water public. No privatization. Full transparency on water quality, contracts, and the Merck contamination at 126 East Lincoln Avenue.</p>
+    </div>
+    <div class="platform-item">
+      <p class="platform-number">02</p>
+      <h3 class="platform-title">Affordable Housing</h3>
+      <p class="platform-desc">Real affordable housing for Rahway residents, not luxury development that prices out the people who built this city.</p>
+    </div>
+    <div class="platform-item">
+      <p class="platform-number">03</p>
+      <h3 class="platform-title">Flood Resilience</h3>
+      <p class="platform-desc">Invest in infrastructure that protects Rahway's neighborhoods from flooding — now, before the next storm.</p>
+    </div>
+    <div class="platform-item">
+      <p class="platform-number">04</p>
+      <h3 class="platform-title">Embedded Mental Health</h3>
+      <p class="platform-desc">Mental health services woven into schools, first response, and community programs — not as an afterthought, but as infrastructure.</p>
+    </div>
+    <div class="platform-item">
+      <p class="platform-number">05</p>
+      <h3 class="platform-title">Arts District Development</h3>
+      <p class="platform-desc">Rahway has a creative community. Build an arts district that supports local artists, drives economic development, and makes the city a destination.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+
+<section id="donate">
+  <p class="section-label">Support the Campaign</p>
+  <h2 class="section-title">No corporate money.<br>No PACs. Just people.</h2>
+  <p class="section-body" style="text-align:center; margin-bottom: 2rem;">Every dollar goes directly to reaching Rahway voters. This campaign is funded by residents, not special interests.</p>
+  <a href="https://donorbox.org/hope-for-rahway" class="btn-primary" target="_blank">Donate Now</a>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div>
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Join the movement.</h2>
+    <p class="section-body">Want to volunteer, ask a question, or just say hello? Reach out directly.</p>
+    <p class="section-body" style="margin-top:1.5rem;">
+      Email: <a href="mailto:hope@hopeforrahway.com" style="color:var(--white);">hope@hopeforrahway.com</a>
+    </p>
+  </div>
+  <div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="How can you help? What's on your mind?"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="cursor:pointer; border:none;">Send Message</button>
+      <p class="form-note">Paid for by Hope for Rahway. Not authorized by any candidate committee.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <span>© 2026 Hope for Rahway. All rights reserved.</span>
+  <span>#HopeForRahway &nbsp;·&nbsp; #RadicalTransparency &nbsp;·&nbsp; #Rahway2026</span>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  e.target.innerHTML = '<p style="opacity:0.7;font-size:0.85rem;line-height:1.8;">Thank you for reaching out. Hope will be in touch soon.</p>';
+}
+</script>
+
+</body>
+</html>
