@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hope for Rahway | Independent Candidate for Mayor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #E8620A;
+      --orange-light: #FF7A20;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --mid: #1C1C1C;
+      --white: #FFFFFF;
+      --offwhite: #F2F2F2;
+      --grey: #888888;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      background: var(--black);
+      border-bottom: 2px solid var(--orange);
+    }
+    .nav-logo {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--orange); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 5rem 2.5rem 4rem;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 60%, rgba(232,98,10,0.06) 100%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-name {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+      animation: fadeUp 0.7s 0.05s ease both;
+    }
+    .hero-name span { color: var(--orange); }
+    .hero-subtitle {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.5;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--orange);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s 0.15s ease both;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      max-width: 560px;
+      color: var(--white);
+      opacity: 0.75;
+      margin-bottom: 2.5rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.25s ease both;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-light); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* SECTIONS */
+    section { padding: 6rem 2.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+    }
+    h2 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    /* ABOUT */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      margin-bottom: 1.1rem;
+      color: var(--white);
+      opacity: 0.78;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .about-visual {
+      border-left: 4px solid var(--orange);
+      padding: 2rem 2.5rem;
+      background: rgba(232,98,10,0.05);
+    }
+    .about-visual blockquote {
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--white);
+      opacity: 0.9;
+    }
+    .about-visual blockquote::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: var(--orange);
+      line-height: 0;
+      vertical-align: -1.2rem;
+      margin-right: 0.2rem;
+      font-family: Georgia, serif;
+    }
+
+    /* PLATFORM */
+    #platform { background: var(--black); }
+    .platform-intro {
+      max-width: 620px;
+      margin-bottom: 3rem;
+      color: var(--white);
+      opacity: 0.7;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .pillar {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .pillar:hover { background: var(--mid); }
+    .pillar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width 0.3s ease;
+    }
+    .pillar:hover::after { width: 100%; }
+    .pillar-num {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .pillar h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+    .pillar p {
+      font-size: 0.92rem;
+      color: var(--white);
+      opacity: 0.65;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* TRANSPARENCY */
+    #transparency { background: var(--mid); }
+    .transparency-box {
+      max-width: 800px;
+    }
+    .transparency-box p {
+      color: var(--white);
+      opacity: 0.8;
+      margin-bottom: 1.2rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .transparency-box p:last-child { margin-bottom: 0; }
+    .transparency-highlight {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* DONATE */
+    #donate { background: var(--black); }
+    .donate-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .donate-text p {
+      color: var(--white);
+      opacity: 0.78;
+      margin-bottom: 1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .donate-widget {
+      background: var(--mid);
+      border-top: 3px solid var(--orange);
+      padding: 2rem;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--dark); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+    .contact-item { margin-bottom: 1.8rem; }
+    .contact-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+    }
+    .contact-item a, .contact-item p {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.75;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+    }
+    .contact-item a:hover { color: var(--orange); opacity: 1; }
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    input, textarea {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.9rem 1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    input:focus, textarea:focus { border-color: var(--orange); border-bottom-color: var(--orange); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      border-top: 2px solid var(--orange);
+    }
+    .footer-wordmark {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-wordmark span { color: var(--orange); }
+    footer p {
+      font-size: 0.78rem;
+      color: var(--white);
+      opacity: 0.35;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin-top: 0.4rem;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.68rem; letter-spacing: 0.1em; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero-name { font-size: clamp(4rem, 22vw, 6rem); }
+      .about-grid, .donate-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pillars { gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">HOPE <span>FOR</span> RAHWAY</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#donate">Donate</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Rahway, NJ &mdash; November 2026</div>
+    <div class="hero-name">H<span>O</span>PE</div>
+    <div class="hero-subtitle">For Rahway &mdash; Independent Candidate for Mayor</div>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">No party bosses. No corporate donors. Just a Rahway resident who has been paying attention and is not afraid to say so.</p>
+    <div class="hero-cta">
+      <a href="#donate" class="btn btn-primary">Support the Campaign</a>
+      <a href="#platform" class="btn btn-outline">Read the Platform</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">About Hope</div>
+          <h2>Rahway deserves a mayor who works for you.</h2>
+          <p>I am Hope &mdash; artist, grandmother, former EMT, community organizer, and independent candidate for Mayor of Rahway.</p>
+          <p>I moved to Rahway for the arts district and stayed because this city matters. I have been doing the research, filing OPRA requests, studying the contracts, and asking the hard questions residents deserve answers to.</p>
+          <p>I am not backed by a party machine. I am backed by the people of Rahway and accountable only to them.</p>
+        </div>
+        <div class="about-visual">
+          <blockquote>Radical transparency is not a slogan. It is a promise that city hall will never again make decisions that affect your life without your knowledge.</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM -->
+  <section id="platform">
+    <div class="container">
+      <div class="section-label">The Five Root Principles</div>
+      <h2>A platform built for Rahway residents.</h2>
+      <p class="platform-intro">Every issue on this platform came from listening to Rahway residents. These are not talking points. They are commitments.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01 &mdash; Water</div>
+          <h3>Municipal Water Control</h3>
+          <p>Rahway water belongs to Rahway residents. We will end opaque water contracts and establish full public transparency over our water system, supply, and safety.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02 &mdash; Housing</div>
+          <h3>Affordable Housing</h3>
+          <p>The promises that drew people to Rahway must be honored. We will fight displacement and demand accountability from developers.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03 &mdash; Climate</div>
+          <h3>Flood Resilience</h3>
+          <p>Climate change is not coming. It is here. Rahway must invest in real flood infrastructure and stop greenwashing projects that do not protect residents.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04 &mdash; Health</div>
+          <h3>Embedded Mental Health Services</h3>
+          <p>Mental health response belongs in our communities. We will build integrated services that reach residents where they are.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">05 &mdash; Arts</div>
+          <h3>Arts District Development</h3>
+          <p>Rahway's creative community is an asset, not an afterthought. We will deliver on the arts district promises and ensure artists can afford to live and work here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPARENCY -->
+  <section id="transparency">
+    <div class="container">
+      <div class="section-label">Radical Transparency</div>
+      <h2>You have a right to know.</h2>
+      <div class="transparency-box">
+        <div class="transparency-highlight">This is a promise, not a talking point.</div>
+        <p>City government works best when residents are informed. That means publishing meeting materials in advance, posting contracts publicly, and making OPRA requests unnecessary because the information was never hidden in the first place.</p>
+        <p>As Mayor, I will implement open budget dashboards, publish all vendor contracts, and hold regular public office hours &mdash; not just election-year town halls.</p>
+        <p>Radical transparency is not a risk. It is how trust gets built.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate">
+    <div class="container">
+      <div class="donate-grid">
+        <div class="donate-text">
+          <div class="section-label">Support the Campaign</div>
+          <h2>This campaign runs on people, not party money.</h2>
+          <p>Every dollar donated goes directly toward reaching Rahway voters through door knocking, flyers, events, and getting our message out without a machine behind us.</p>
+          <p>No PACs. No bundlers. No strings. Just neighbors investing in their city.</p>
+          <p style="font-size:0.78rem; opacity:0.4; margin-top:1.5rem; font-family: Helvetica, sans-serif;">Paid for by Hope for Rahway Campaign Committee. Contributions are not tax deductible.</p>
+        </div>
+        <div class="donate-widget">
+          <script type="module" src="https://donorbox.org/widgets.js" async></script>
+          <dbox-widget campaign="hope-for-rahway" type="donation_form" enable-auto-scroll="true"></dbox-widget>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get Involved</div>
+      <h2>Ready to help? Let us talk.</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--white); opacity:0.65; margin-bottom:2.5rem; font-family: Helvetica, sans-serif; font-size:1rem; line-height:1.8;">Whether you want to volunteer, share a concern, or just introduce yourself, Hope reads everything.</p>
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <a href="mailto:hope@hopeforrahway.com">hope@hopeforrahway.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Facebook</div>
+            <a href="https://facebook.com/hopeforrahway" target="_blank">Hope for Rahway</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">TikTok</div>
+            <a href="https://tiktok.com/@hopeforrahway" target="_blank">@hopeforrahway</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Paid for by</div>
+            <p>Hope for Rahway Campaign Committee<br>Rahway, NJ</p>
+          </div>
+        </div>
+        <div>
+          <form onsubmit="handleSubmit(event)">
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Email address" required />
+            <textarea rows="5" placeholder="Your message or how you would like to help..."></textarea>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
+          </form>
+          <p id="form-msg" style="margin-top:1rem; color:var(--orange); font-size:0.9rem; display:none; font-family:Helvetica,sans-serif;">Thanks! Hope will be in touch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wordmark">HOPE <span>FOR</span> RAHWAY</div>
+    <p>Independent Candidate for Mayor &mdash; Rahway, NJ &mdash; November 2026</p>
+    <p>Paid for by Hope for Rahway Campaign Committee. Not authorized by any candidate committee.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById("form-msg").style.display = "block";
+      e.target.reset();
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.style.opacity = "1";
+          el.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".pillar, .about-visual, .transparency-box, .donate-widget").forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
