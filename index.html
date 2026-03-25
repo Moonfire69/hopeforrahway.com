@@ -1,131 +1,645 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campaign for Mayor</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hope for Rahway | Independent Candidate for Mayor 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    header {
-      background: #1a3c6e;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background: #333;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      color: #1a3c6e;
-    }
-
-    .cta {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #e63946;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #1a3c6e;
-      color: white;
-      margin-top: 20px;
-    }
+:root {
+  --fire: #C8401A;
+  --gold: #C9960C;
+  --dark: #0D0D0B;
+  --charcoal: #1C1C19;
+  --mid: #2E2E2A;
+  --cream: #F0EBE0;
+  --warm-white: #FAF7F2;
+  --muted: #888880;
+  --border: rgba(201,150,12,0.25);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(13,13,11,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-donate {
+  background: var(--fire);
+  color: white !important;
+  opacity: 1 !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  transition: background 0.2s !important;
+}
+.nav-donate:hover { background: #a33215 !important; color: white !important; }
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 70% at 80% 50%, rgba(200,64,26,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,150,12,0.08) 0%, transparent 60%),
+    var(--dark);
+  z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; max-width: 780px; }
+.hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--warm-white);
+  margin-bottom: 0.3rem;
+}
+h1 .accent { color: var(--fire); font-style: italic; }
+.hero-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  font-style: italic;
+  color: var(--gold);
+  margin: 1.2rem 0 2rem;
+  font-weight: 400;
+}
+.hero-description {
+  font-size: 1.05rem;
+  color: var(--cream);
+  opacity: 0.85;
+  max-width: 560px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--fire);
+  color: white;
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-primary:hover { background: #a33215; transform: translateY(-1px); }
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--cream);
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.hero-hashtags {
+  margin-top: 2.5rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+section { padding: 6rem 3rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--warm-white);
+  margin-bottom: 1.5rem;
+}
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--cream);
+  opacity: 0.8;
+  max-width: 640px;
+  margin-bottom: 3.5rem;
+}
+.divider { width: 100%; height: 1px; background: var(--border); margin: 0; }
+#about { background: var(--charcoal); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.about-left p { font-size: 1rem; opacity: 0.85; margin-bottom: 1.2rem; line-height: 1.85; }
+.about-facts { display: flex; flex-direction: column; gap: 1.5rem; }
+.fact-item { border-left: 2px solid var(--fire); padding-left: 1.2rem; }
+.fact-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+.fact-value { font-size: 1rem; color: var(--cream); font-weight: 500; }
+#platform { background: var(--dark); }
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.principle-card {
+  background: var(--charcoal);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--fire);
+  padding: 2rem;
+  border-radius: 2px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.principle-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+.principle-number { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fire); font-weight: 600; margin-bottom: 0.5rem; }
+.principle-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--warm-white); margin-bottom: 0.8rem; font-weight: 700; }
+.principle-text { font-size: 0.92rem; opacity: 0.8; line-height: 1.75; }
+#independent { background: var(--charcoal); }
+.independent-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-style: italic;
+  color: var(--warm-white);
+  line-height: 1.5;
+  border-left: 3px solid var(--gold);
+  padding-left: 2rem;
+  margin: 2rem 0 3rem;
+  max-width: 780px;
+}
+.independent-body { max-width: 720px; }
+.independent-body p { font-size: 1rem; opacity: 0.85; margin-bottom: 1.2rem; line-height: 1.85; }
+#transparency { background: var(--dark); }
+.transparency-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.transparency-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+.transparency-item h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--warm-white); margin-bottom: 0.5rem; }
+.transparency-item p { font-size: 0.9rem; opacity: 0.75; line-height: 1.7; }
+#donate { background: var(--charcoal); }
+.donate-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.donate-text p { font-size: 1rem; opacity: 0.85; margin-bottom: 1.2rem; line-height: 1.85; }
+.donate-frame {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 1.5rem;
+  text-align: center;
+}
+.donate-frame p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 1.2rem; }
+.donate-link-btn {
+  display: inline-block;
+  background: var(--fire);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.donate-link-btn:hover { background: #a33215; }
+#involve { background: var(--dark); }
+.involve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.involve-card { background: var(--charcoal); border: 1px solid var(--border); padding: 2rem; border-radius: 2px; text-align: center; }
+.involve-icon { font-size: 2rem; margin-bottom: 1rem; }
+.involve-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--warm-white); margin-bottom: 0.5rem; }
+.involve-card p { font-size: 0.88rem; opacity: 0.7; margin-bottom: 1.2rem; }
+.involve-card a { color: var(--gold); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; text-decoration: none; }
+.involve-card a:hover { text-decoration: underline; }
+#contact { background: var(--charcoal); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+.contact-info p { font-size: 1rem; opacity: 0.8; margin-bottom: 1rem; line-height: 1.8; }
+.contact-info a { color: var(--gold); text-decoration: none; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--mid);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  padding: 0.85rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--gold); }
+.contact-form textarea { height: 140px; resize: vertical; }
+.contact-form button {
+  background: var(--fire);
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.contact-form button:hover { background: #a33215; }
+.form-success {
+  display: none;
+  background: rgba(201,150,12,0.1);
+  border: 1px solid var(--gold);
+  padding: 1rem 1.2rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-top: 0.5rem;
+}
+footer {
+  background: var(--dark);
+  padding: 3rem;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); }
+.footer-tagline { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.08em; margin-top: 0.2rem; }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.06em; transition: color 0.2s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-legal {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--muted);
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 7rem 1.5rem 4rem; }
+  section { padding: 4rem 1.5rem; }
+  .about-grid,
+  .donate-inner,
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  footer { padding: 2rem 1.5rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow { animation: fadeUp 0.6s ease both; }
+h1            { animation: fadeUp 0.6s 0.15s ease both; }
+.hero-tagline { animation: fadeUp 0.6s 0.28s ease both; }
+.hero-description { animation: fadeUp 0.6s 0.4s ease both; }
+.hero-buttons { animation: fadeUp 0.6s 0.52s ease both; }
+.hero-hashtags { animation: fadeUp 0.6s 0.64s ease both; }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>Hope Moran for Mayor</h1>
-  <p>Building a Stronger Community Together</p>
-</header>
-
-<nav>
-  <a href="#about">About</a>
-  <a href="#platform">Platform</a>
-  <a href="#volunteer">Volunteer</a>
-  <a href="#donate">Donate</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<div class="container">
-
-  <section id="about" class="section">
-    <h2>About the Candidate</h2>
-    <p>Hope Moran is committed to transparency, accountability, and real solutions for our community. With a background in leadership and advocacy, she is ready to bring meaningful change.</p>
-  </section>
-
-  <section id="platform" class="section">
-    <h2>Platform</h2>
-    <ul>
-      <li>Affordable Housing</li>
-      <li>Clean & Safe Water</li>
-      <li>Flood Resilience</li>
-      <li>Mental Health Support</li>
-      <li>Arts & Economic Development</li>
+  <nav>
+    <a href="#hero" class="nav-logo">Hope for Rahway</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#independent">Why Independent</a></li>
+      <li><a href="#involve">Get Involved</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://donorbox.org/hope-for-rahway" target="_blank" class="nav-donate">Donate</a></li>
     </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Rahway, NJ &mdash; Independent Candidate for Mayor 2026</p>
+      <h1>Hope for<br><span class="accent">Rahway.</span></h1>
+      <p class="hero-tagline">Radical Transparency. Real Accountability. Rooted Community.</p>
+      <p class="hero-description">
+        Artist. Grandmother. Former EMT. Community organizer. Rahway resident.
+        I am running for Mayor because this city deserves leadership that answers to the people,
+        not to party machines or private interests.
+      </p>
+      <div class="hero-buttons">
+        <a href="#platform" class="btn-primary">See the Platform</a>
+        <a href="https://donorbox.org/hope-for-rahway" target="_blank" class="btn-outline">Support the Campaign</a>
+      </div>
+      <p class="hero-hashtags">#HopeForRahway &nbsp; #Rahway2026 &nbsp; #RadicalTransparency</p>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-left">
+          <p class="section-label">About Hope</p>
+          <h2>A Life of Service.<br>A Voice for Rahway.</h2>
+          <p>I have spent my life in service to community. I worked as an EMT for fifteen years, including during September 11, 2001. I served as Chair of Health and Human Services for the NAACP Rahway Branch. I have been politically active since age 16.</p>
+          <p>I moved to Rahway in 2018 and immediately saw a city full of potential being held back by closed-door governance. I built a restaurant here. I built an art practice here. This city is my home, and I refuse to watch it be sold off piece by piece while residents are kept in the dark.</p>
+          <p>I also create mixed media paintings and sculptural jewelry from reclaimed materials through Moonfire Studios. I believe art and civic life are inseparable. Both are acts of radical imagination.</p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-item">
+            <p class="fact-label">Background</p>
+            <p class="fact-value">Artist &amp; Founder, Moonfire Studios</p>
+          </div>
+          <div class="fact-item">
+            <p class="fact-label">Service</p>
+            <p class="fact-value">15 Years as EMT, including 9/11 Response</p>
+          </div>
+          <div class="fact-item">
+            <p class="fact-label">Civic Leadership</p>
+            <p class="fact-value">Chair, Health &amp; Human Services, NAACP Rahway Branch</p>
+          </div>
+          <div class="fact-item">
+            <p class="fact-label">Community</p>
+            <p class="fact-value">Rahway Resident since 2018. Independent. Accountable to you.</p>
+          </div>
+          <div class="fact-item">
+            <p class="fact-label">Running As</p>
+            <p class="fact-value">Independent Candidate for Mayor, November 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="platform">
+    <div class="section-inner">
+      <p class="section-label">The Platform</p>
+      <h2>The Five Root Principles</h2>
+      <p class="section-lead">Not promises. Not talking points. A framework built from listening to this community and understanding what Rahway actually needs to grow and thrive for everyone who lives here.</p>
+      <div class="principles-grid">
+        <div class="principle-card">
+          <p class="principle-number">Root 01</p>
+          <h3 class="principle-title">Municipal Water Control</h3>
+          <p class="principle-text">Rahway's water belongs to Rahway's residents. Not to a private equity firm. Not to a utility conglomerate. I will fight to keep public water publicly controlled, fully transparent, and accountable to the people who drink it.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-number">Root 02</p>
+          <h3 class="principle-title">Affordable Housing</h3>
+          <p class="principle-text">Development should serve the people who already live here. We need real affordability, anti-displacement protections, and housing policy that keeps long-term residents from being priced out of the city they built.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-number">Root 03</p>
+          <h3 class="principle-title">Flood Resilience</h3>
+          <p class="principle-text">Climate change is not a future concern for Rahway. It is a present reality. I will prioritize infrastructure investment and planning that protects our neighborhoods from flooding and makes this city resilient for generations.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-number">Root 04</p>
+          <h3 class="principle-title">Embedded Mental Health Services</h3>
+          <p class="principle-text">Police are not mental health workers. We need embedded mental health professionals in our city services, schools, and community response teams so that people in crisis get care, not punishment.</p>
+        </div>
+        <div class="principle-card">
+          <p class="principle-number">Root 05</p>
+          <h3 class="principle-title">Arts District Development</h3>
+          <p class="principle-text">Arts and culture are not decoration. They are economic drivers and community glue. I will champion a real arts district in Rahway that supports local artists, attracts creative businesses, and makes this city a destination.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="independent">
+    <div class="section-inner">
+      <p class="section-label">Why Independent</p>
+      <h2>No Party. No Machine.<br>Just Rahway.</h2>
+      <blockquote class="independent-quote">
+        "Radical transparency is not a slogan. It is a commitment. Every decision I make as Mayor will be made in the open, with the community at the table."
+      </blockquote>
+      <div class="independent-body">
+        <p>The two-party system in Rahway is not delivering for Rahway residents. When the same political insiders cycle through positions, when party counsel represents both the city and the party in legal matters, when water deals are struck without a disclosed dollar amount or public input, something is broken.</p>
+        <p>I am not running against a party. I am running for the residents who show up to council meetings with questions and get non-answers. For the people who have watched developers get sweetheart deals while renters get squeezed. For the neighborhoods that flood every time it rains heavily, and have been waiting for solutions for years.</p>
+        <p>Independent means I answer to you. That is not a talking point. It is the entire point.</p>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="transparency">
+    <div class="section-inner">
+      <p class="section-label">Radical Transparency</p>
+      <h2>What Transparency<br>Actually Looks Like</h2>
+      <p class="section-lead">This campaign operates in public. Here is what that means in practice.</p>
+      <div class="transparency-items">
+        <div class="transparency-item">
+          <h3>Public Campaign Finance</h3>
+          <p>All donations disclosed. All expenditures disclosed. You can see exactly who is funding this campaign and how every dollar is spent.</p>
+        </div>
+        <div class="transparency-item">
+          <h3>Open Research</h3>
+          <p>When I investigate city contracts, property deals, or political conflicts of interest, I share what I find publicly, with sourced documentation.</p>
+        </div>
+        <div class="transparency-item">
+          <h3>No Backroom Deals</h3>
+          <p>I will not make private agreements with developers, political donors, or party officials in exchange for support. That is not how this campaign works.</p>
+        </div>
+        <div class="transparency-item">
+          <h3>Community First Decisions</h3>
+          <p>Every major policy decision will include public input. Not a checkbox. A real process with real community voice before anything is finalized.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="donate">
+    <div class="section-inner">
+      <div class="donate-inner">
+        <div class="donate-text">
+          <p class="section-label">Support the Campaign</p>
+          <h2>Every Dollar<br>Stays Local.</h2>
+          <p>This campaign does not have the backing of a political machine or a PAC. It has the backing of Rahway residents who believe the city deserves better.</p>
+          <p>Your contribution goes directly to outreach, materials, community events, and the work of building a genuinely independent campaign from the ground up.</p>
+          <p>No amount is too small. What matters is that this community shows up for itself.</p>
+        </div>
+        <div class="donate-frame">
+          <p>Contribute securely through Donorbox:</p>
+          <a href="https://donorbox.org/hope-for-rahway" target="_blank" class="donate-link-btn">Donate to Hope for Rahway</a>
+          <p style="margin-top:1.2rem; font-size:0.78rem;">
+            Paid for and authorized by Hope for Rahway Campaign Committee.<br>
+            Contributions are not tax-deductible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="involve">
+    <div class="section-inner">
+      <p class="section-label">Get Involved</p>
+      <h2>Join the Campaign</h2>
+      <p class="section-lead">Independent campaigns run on community energy. Here is how you can help.</p>
+      <div class="involve-grid">
+        <div class="involve-card">
+          <div class="involve-icon">🗳</div>
+          <h3>Vote in November</h3>
+          <p>The 2026 Rahway mayoral election is in November. Make sure you are registered and ready.</p>
+          <a href="https://www.njelections.org/voter-information/voter-registration.shtml" target="_blank">Check Registration &rarr;</a>
+        </div>
+        <div class="involve-card">
+          <div class="involve-icon">📣</div>
+          <h3>Spread the Word</h3>
+          <p>Share this website. Follow and share on social media. Talk to your neighbors about what is at stake.</p>
+          <a href="#contact">Get in Touch &rarr;</a>
+        </div>
+        <div class="involve-card">
+          <div class="involve-icon">🤝</div>
+          <h3>Volunteer</h3>
+          <p>We need canvassers, phone bankers, event helpers, and people who believe in this city. All skill levels welcome.</p>
+          <a href="#contact">Sign Up &rarr;</a>
+        </div>
+        <div class="involve-card">
+          <div class="involve-icon">💬</div>
+          <h3>Follow Along</h3>
+          <p>Campaign updates, research findings, and community posts. Find us on Facebook under Hope for Rahway.</p>
+          <a href="https://www.facebook.com" target="_blank">Facebook &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <h2>Let's Talk.</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Have questions about the campaign? Want to get involved? Know something about Rahway that I should hear? I want to hear from you.</p>
+          <p>This campaign operates on radical transparency. That means I am actually reachable. Send a message and you will hear back.</p>
+          <p>Email: <a href="mailto:hope@hopeforrahway.com">hope@hopeforrahway.com</a></p>
+        </div>
+        <div class="contact-form">
+          <input type="text" id="cf-name" placeholder="Your Name" />
+          <input type="email" id="cf-email" placeholder="Your Email" />
+          <textarea id="cf-message" placeholder="Your message..."></textarea>
+          <button onclick="submitForm()">Send Message</button>
+          <div class="form-success" id="form-success">Thank you. Your message has been received.</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="volunteer" class="section">
-    <h2>Get Involved</h2>
-    <p>Join the campaign and help make a difference.</p>
-    <a href="#contact" class="cta">Sign Up to Volunteer</a>
-  </section>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Hope for Rahway</div>
+        <div class="footer-tagline">Radical Transparency &bull; Independent 2026</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-legal">
+      Paid for and authorized by the Hope for Rahway Campaign Committee &bull;
+      Rahway, NJ &bull; ELEC Registered &bull;
+      <a href="https://donorbox.org/hope-for-rahway" target="_blank" style="color:inherit;">donorbox.org/hope-for-rahway</a>
+    </div>
+  </footer>
 
-  <section id="donate" class="section">
-    <h2>Support the Campaign</h2>
-    <p>Your contribution helps us reach more people.</p>
-    <a href="#" class="cta">Donate Now</a>
-  </section>
-
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: info@hopeformayor.com</p>
-    <p>Phone: (123) 456-7890</p>
-  </section>
-
-</div>
-
-<footer>
-  <p>Paid for by Hope Moran for Mayor</p>
-</footer>
-
+  <script>
+    function submitForm() {
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var msg = document.getElementById('cf-message').value.trim();
+      if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('cf-name').value = '';
+      document.getElementById('cf-email').value = '';
+      document.getElementById('cf-message').value = '';
+    }
+  </script>
 </body>
 </html>
